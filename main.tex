@@ -1,0 +1,157 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{MSdocTr-Lite: A Lite Transformation for Full Page Multi-script Handwritting Recognition}
+\author{Kim Long Hoang}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+ The Transformer architecture excels in pattern recognition but requires large datasets for training and validating. In Handwritten Text Recognition (HTR), gathering extensive labeled data is challenging and costly. This paper presents a lightweight transformer for full-page multiscript handwritting recognition, addressing data scarcity by enabling training on reasonably sized datasets without external data. It learns page-level reading order using a curriculum learning strategy, eliminating line segmentation errors and reducing segmentation annotation needs. Additionally, it supports easy adaptation to other scripts through transfer learning with page-level labeled images. Experiments on various datasets(French, English, Spanish,...) demonstrate the model's effectiveness. 
+Keywords: Seq2Seq model, page-level recognition, Handwritten Text Recognition, Multi-script, Transformer, Transfer Learning  
+\end{abstract}
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Start the Introduction section on a new page
+\newpage
+\section{Introduction}
+
+Handwritten Text Recognition (HTR) converts scanned handwritten documents into machine-readable text, but faces challenges due to handwriting variability and segmentation issues. Traditional methods struggle with segmentation, leading to errors. Recent approaches using deep learning, like transformer models, aim to recognize text at the page level, avoiding segmentation. This paper proposes a lightweight transformer model trained with a curriculum learning strategy, which is efficient, adaptable to various scripts, and performs well across multiple languages. The structure includes related work, proposed approach, experimental results, and conclusions.
+
+\section{Theoretical Background}
+\subsection{Background on Handwritten Text Recognition (HTR)}
+Handwritten Text Recognition (HTR) converts scanned handwritten documents into machine-readable text. It's challenging due to diverse writing styles, poor document quality, and unique script properties. Early HTR methods relied on character or word segmentation, which struggled with cursive and inconsistent handwriting. More recent approaches focus on text line recognition, achieving better performance but still facing issues with line skew and spacing. Advances in deep learning have led to paragraph or page-level recognition, but these methods require significant computational resources and annotated data. This paper proposes a lightweight transformer model that uses curriculum learning and standard GPUs, making it efficient and adaptable to various scripts.
+
+\subsection{Overview of current HTR approaches}
+Current Handwritten Text Recognition (HTR) approaches include:
+    \begin{itemize}
+        \item Character-Level Segmentation: Struggles with cursive writing accuracy.
+        \item Word-Level Segmentation: Faces issues with irregular spacing between words.
+        \item Text Line Recognition: State-of-the-art performance but challenges with skew/slant lines.
+        \item Deep Learning-Based Methods: Use MDLSTM and transformers, requiring extensive data and computational resources. 
+    \end{itemize}
+The proposed solution is a lightweight transformer model for page-level HTR, trained with curriculum learning, needing fewer resources, and adaptable to various scripts.
+
+\subsection{Motivation for developing a lite transformer model}
+Motivated by the need for efficient and effective handwritten document recognition, we propose a lite transformer model for page-level handwritten text recognition. This model uses a limited number of parameters and can be trained without external data. Employing a curriculum learning strategy, the model learns reading order and scales to large text images. This strategy is applied once, making the model adaptable to different scripts with minimal additional training. Our architecture requires less memory, allowing training on standard GPUs. Key contributions include:
+    
+
+    \begin{itemize}        
+        \item An end-to-end lite transformer model avoiding early segmentation errors.
+        \item Curriculum learning strategy for efficient training with limited annotated data.
+        \item Adaptability to other scripts using simple transfer learning.
+        \item Validation across multiple scripts and languages, confirming the model's effectiveness.
+    \end{itemize}
+    
+\section{Related Work}
+\subsection{Review of line-level HTR systems}
+Early character and word segmentation methods.
+Line-level recognition and its advantages over word-based approaches.
+
+\subsection{Review of page-level HTR systems}
+Encoder-decoder architectures with attention mechanisms.
+Limitations of existing transformer-based models in terms of data requirements and computational resources.
+
+
+
+\section{Proposed Approach}
+\subsection{Model Architechture}
+Description of the lite transformer model.
+    \begin{itemize}
+        \item Transformer-Encoder: Feature extraction and representation.
+        \item Transformer-Decoder: Sequence-to-sequence mapping. 
+    \end{itemize}
+    
+\subsection{Curriculum Learning Strategy}
+Importance of curriculum learning in training transformers with limited data.
+Three-stage training process:
+Initial training with small blocks of text.
+Fine-tuning with larger, more complex blocks.
+Final tuning with full page-level data.
+
+\subsection{Transfer Learning}
+Adapting the model to different scripts using transfer learning.
+Process and benefits of transfer learning in multi-script HTR.
+
+\section{Experimental Results}
+\subsection{Experimental Setup}
+    \begin{itemize}
+        \item Description of datasets used (e.g., IAM, RIMES, Esposalles, KHATT).
+        \item Evaluation metrics and baseline comparisons. 
+    \end{itemize}
+    
+\subsection{Results and Analysis}
+    \begin{itemize}
+        \item Performance of the lite transformer on different datasets.
+        \item Comparison with state-of-the-art models.
+        \item Impact of curriculum learning and transfer learning on model performance.
+    \end{itemize}
+    
+\subsection{Ablation Studies}
+    \begin{itemize}
+        \item Impact of different components of the transformer.
+        \item Detailed analysis of fine-tuning stages and their contributions.
+    \end{itemize}
+
+\section{Discussion}
+    \begin{itemize}
+        \item Analysis of the results in the context of data scarcity and model efficiency.
+        \item Advantages of the proposed lite transformer model.
+            \item[-] Lower computational requirements.
+            \item[-] Improved adaptability to different scripts.
+        \item Limitations and potential areas for improvement.
+   
+    \end{itemize}
+
+\section{Conclusion}
+    \begin{itemize}
+        \item Summary of key findings and contributions.
+        \item Implications for future research in HTR and deep learning.
+        \item Final thoughts on the impact of the proposed model on multimedia data analysis
+    \end{itemize}
+
+\section{References}
+Comprehensive list of all sources cited in the paper, including seminal works and recent studies in HTR and deep learning.
+
+\section{Appendices (if applicable)}
+    \begin{itemize}
+        \item Additional data, code snippets, or detailed experimental results.
+        \item Supplementary material supporting the main content of the paper.
+    \end{itemize}
+
+
+
+
+
+
+
+
+
+
+\
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
